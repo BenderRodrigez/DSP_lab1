@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSP_lab1", "DSP_lab1\DSP_lab1.csproj", "{FCDADE41-733E-48F4-A903-6CAB2B7E1EFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCDADE41-733E-48F4-A903-6CAB2B7E1EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDADE41-733E-48F4-A903-6CAB2B7E1EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDADE41-733E-48F4-A903-6CAB2B7E1EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDADE41-733E-48F4-A903-6CAB2B7E1EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
