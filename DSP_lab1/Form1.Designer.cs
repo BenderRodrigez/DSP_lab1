@@ -28,42 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.openFileButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.fileChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.energyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.autocorellationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label4 = new System.Windows.Forms.Label();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.zeroCrossingChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.windowSizeUD = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.noiseLevelUD = new System.Windows.Forms.NumericUpDown();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cutFrequencyUD = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.fileChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energyChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autocorellationChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zeroCrossingChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.windowSizeUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noiseLevelUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cutFrequencyUD)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // openFileButton
             // 
-            this.button1.Location = new System.Drawing.Point(534, 134);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Открыть файл";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.openFileButton.Location = new System.Drawing.Point(534, 173);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(95, 23);
+            this.openFileButton.TabIndex = 0;
+            this.openFileButton.Text = "Открыть файл";
+            this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
@@ -78,33 +84,33 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Звуковой файл:";
             // 
-            // chart1
+            // fileChart
             // 
-            chartArea18.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea18);
-            this.chart1.Location = new System.Drawing.Point(12, 29);
-            this.chart1.Name = "chart1";
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series18.Name = "Series1";
-            this.chart1.Series.Add(series18);
-            this.chart1.Size = new System.Drawing.Size(512, 128);
-            this.chart1.TabIndex = 3;
-            this.chart1.Text = "chart1";
+            chartArea1.Name = "ChartArea1";
+            this.fileChart.ChartAreas.Add(chartArea1);
+            this.fileChart.Location = new System.Drawing.Point(12, 29);
+            this.fileChart.Name = "fileChart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            this.fileChart.Series.Add(series1);
+            this.fileChart.Size = new System.Drawing.Size(512, 128);
+            this.fileChart.TabIndex = 3;
+            this.fileChart.Text = "chart1";
             // 
-            // chart2
+            // energyChart
             // 
-            chartArea19.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea19);
-            this.chart2.Location = new System.Drawing.Point(12, 189);
-            this.chart2.Name = "chart2";
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series19.Name = "Series1";
-            this.chart2.Series.Add(series19);
-            this.chart2.Size = new System.Drawing.Size(512, 128);
-            this.chart2.TabIndex = 4;
-            this.chart2.Text = "chart2";
+            chartArea2.Name = "ChartArea1";
+            this.energyChart.ChartAreas.Add(chartArea2);
+            this.energyChart.Location = new System.Drawing.Point(12, 189);
+            this.energyChart.Name = "energyChart";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series1";
+            this.energyChart.Series.Add(series2);
+            this.energyChart.Size = new System.Drawing.Size(512, 128);
+            this.energyChart.TabIndex = 4;
+            this.energyChart.Text = "chart2";
             // 
             // label2
             // 
@@ -124,19 +130,19 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Автокорелляция с единичной задержкой:";
             // 
-            // chart3
+            // autocorellationChart
             // 
-            chartArea20.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea20);
-            this.chart3.Location = new System.Drawing.Point(12, 352);
-            this.chart3.Name = "chart3";
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series20.Name = "Series1";
-            this.chart3.Series.Add(series20);
-            this.chart3.Size = new System.Drawing.Size(512, 128);
-            this.chart3.TabIndex = 6;
-            this.chart3.Text = "chart3";
+            chartArea3.Name = "ChartArea1";
+            this.autocorellationChart.ChartAreas.Add(chartArea3);
+            this.autocorellationChart.Location = new System.Drawing.Point(12, 352);
+            this.autocorellationChart.Name = "autocorellationChart";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "Series1";
+            this.autocorellationChart.Series.Add(series3);
+            this.autocorellationChart.Size = new System.Drawing.Size(512, 128);
+            this.autocorellationChart.TabIndex = 6;
+            this.autocorellationChart.Text = "chart3";
             // 
             // label4
             // 
@@ -147,19 +153,19 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Число переходов через \"0\":";
             // 
-            // chart4
+            // zeroCrossingChart
             // 
-            chartArea21.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea21);
-            this.chart4.Location = new System.Drawing.Point(12, 516);
-            this.chart4.Name = "chart4";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series21.Name = "Series1";
-            this.chart4.Series.Add(series21);
-            this.chart4.Size = new System.Drawing.Size(512, 128);
-            this.chart4.TabIndex = 8;
-            this.chart4.Text = "chart4";
+            chartArea4.Name = "ChartArea1";
+            this.zeroCrossingChart.ChartAreas.Add(chartArea4);
+            this.zeroCrossingChart.Location = new System.Drawing.Point(12, 516);
+            this.zeroCrossingChart.Name = "zeroCrossingChart";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Name = "Series1";
+            this.zeroCrossingChart.Series.Add(series4);
+            this.zeroCrossingChart.Size = new System.Drawing.Size(512, 128);
+            this.zeroCrossingChart.TabIndex = 8;
+            this.zeroCrossingChart.Text = "chart4";
             // 
             // label5
             // 
@@ -170,51 +176,112 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Интервал анализа:";
             // 
-            // numericUpDown1
+            // windowSizeUD
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(534, 25);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.windowSizeUD.Location = new System.Drawing.Point(534, 25);
+            this.windowSizeUD.Maximum = new decimal(new int[] {
             600,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.windowSizeUD.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 11;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.windowSizeUD.Name = "windowSizeUD";
+            this.windowSizeUD.Size = new System.Drawing.Size(120, 20);
+            this.windowSizeUD.TabIndex = 11;
+            this.windowSizeUD.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.windowSizeUD.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(534, 61);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(115, 17);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "Предзашумление";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // noiseLevelUD
+            // 
+            this.noiseLevelUD.Enabled = false;
+            this.noiseLevelUD.Location = new System.Drawing.Point(534, 85);
+            this.noiseLevelUD.Name = "noiseLevelUD";
+            this.noiseLevelUD.Size = new System.Drawing.Size(120, 20);
+            this.noiseLevelUD.TabIndex = 13;
+            this.noiseLevelUD.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(534, 112);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(53, 17);
+            this.checkBox2.TabIndex = 14;
+            this.checkBox2.Text = "ФНЧ";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // cutFrequencyUD
+            // 
+            this.cutFrequencyUD.Enabled = false;
+            this.cutFrequencyUD.Location = new System.Drawing.Point(534, 136);
+            this.cutFrequencyUD.Maximum = new decimal(new int[] {
+            5512,
+            0,
+            0,
+            0});
+            this.cutFrequencyUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.cutFrequencyUD.Name = "cutFrequencyUD";
+            this.cutFrequencyUD.Size = new System.Drawing.Size(120, 20);
+            this.cutFrequencyUD.TabIndex = 15;
+            this.cutFrequencyUD.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.cutFrequencyUD.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 661);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.cutFrequencyUD);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.noiseLevelUD);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.windowSizeUD);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.chart4);
+            this.Controls.Add(this.zeroCrossingChart);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.chart3);
+            this.Controls.Add(this.autocorellationChart);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.energyChart);
+            this.Controls.Add(this.fileChart);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.openFileButton);
             this.Name = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.energyChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autocorellationChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zeroCrossingChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.windowSizeUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noiseLevelUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cutFrequencyUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,18 +289,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button openFileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart fileChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart energyChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart autocorellationChart;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart zeroCrossingChart;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown windowSizeUD;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown noiseLevelUD;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.NumericUpDown cutFrequencyUD;
     }
 }
 
