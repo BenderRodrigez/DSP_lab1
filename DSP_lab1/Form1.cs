@@ -12,15 +12,17 @@ namespace DSP_lab1
             InitializeComponent();
             //задаём значения, в менюшках
             windowSizeUD.Value = _windowSize;
-            noiseLevelUD.Value = _noiseLevel;
-            cutFrequencyUD.Value = (decimal)_cutFrequency;
+            noiseLevelUD.Value = (decimal) _noiseLevel;
+            cutFrequencyUD.Value = (decimal) _cutFrequency;
+            overlappingUD.Value = (decimal) _overlapping;
         }
         /*-----------Настройки анализа-------------*/
         private float[] _speechFile;
         private WaveFormat _speechFileFormat;
         private int _windowSize = 200;
-        private int _noiseLevel = 0;
+        private float _noiseLevel = 0.003f;
         private float _cutFrequency = 300.0f;
+        private float _overlapping = 0.5f;
         /*-----------------------------------------*/
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,6 +43,18 @@ namespace DSP_lab1
                 //формируем заголовок формочки
                 var tm = new FileInfo(openFileDialog1.FileName);
                 Text = string.Concat(tm.Name, "@", _speechFileFormat.SampleRate, "Hz");
+                //настраиваем оси
+                fileChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
+                fileChart.ChartAreas[0].Axes[0].Minimum = 0;
+
+                autocorellationChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
+                autocorellationChart.ChartAreas[0].Axes[0].Minimum = 0;
+
+                energyChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
+                energyChart.ChartAreas[0].Axes[0].Minimum = 0;
+
+                zeroCrossingChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
+                zeroCrossingChart.ChartAreas[0].Axes[0].Minimum = 0;
                 //считаем функции
                 var energySignal = Energy();
                 var corellationOneSignal = CorrelationOne();
@@ -80,7 +94,8 @@ namespace DSP_lab1
             }
             var tmp = new float[file.Length - _windowSize];
             energyChart.Series[0].Points.Clear();
-            for (int i = 0; i < file.Length - _windowSize; i++)
+            var jump = (int) Math.Round(_windowSize*_overlapping);
+            for (int i = 0; i < file.Length - _windowSize; i+= jump)
             {
                 for (int j = 0; j < _windowSize; j++)
                 {
@@ -105,10 +120,11 @@ namespace DSP_lab1
             var tmp = new float[file.Length - _windowSize];
             autocorellationChart.Series[0].Points.Clear();
 
-            for (int i = 0; i < file.Length; i++)
+            for (int i = 0; i < file.Length; i+=5)
                 file[i] *= (checkBox1.Checked) ? (float) (rand.NextDouble()*(_noiseLevel/100.0f)) : 1.0f;
 
-            for (int i = 0; i < file.Length - _windowSize; i++)
+            var jump = (int)Math.Round(_windowSize * _overlapping);
+            for (int i = 0; i < file.Length - _windowSize; i+=jump)
             {
                 double energy = 0;
                 for (int j = 0; j < _windowSize - 1; j++)
@@ -130,7 +146,9 @@ namespace DSP_lab1
         {
             var tmp = new float[_speechFile.Length - _windowSize];
             zeroCrossingChart.Series[0].Points.Clear();
-            for (int i = 0; i < _speechFile.Length - _windowSize; i++)
+
+            var jump = (int)Math.Round(_windowSize * _overlapping);
+            for (int i = 0; i < _speechFile.Length - _windowSize; i+=jump)
             {
                 int zeroes = 0;
                 for (int j = 0; j < _windowSize - 1; j++)
@@ -156,7 +174,7 @@ namespace DSP_lab1
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            _noiseLevel = (int) noiseLevelUD.Value;
+            _noiseLevel = (float) noiseLevelUD.Value;
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -167,6 +185,11 @@ namespace DSP_lab1
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             _cutFrequency = (float)cutFrequencyUD.Value;
+        }
+
+        private void overlappingUD_ValueChanged(object sender, EventArgs e)
+        {
+            _overlapping = (float) overlappingUD.Value;
         }
     }
 }
