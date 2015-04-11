@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using NAudio.Wave;
 
@@ -47,8 +49,8 @@ namespace DSP_lab1
                 fileChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
                 fileChart.ChartAreas[0].Axes[0].Minimum = 0;
 
-                autocorellationChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
-                autocorellationChart.ChartAreas[0].Axes[0].Minimum = 0;
+                autocorrelationChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
+                autocorrelationChart.ChartAreas[0].Axes[0].Minimum = 0;
 
                 energyChart.ChartAreas[0].Axes[0].Maximum = _speechFile.Length - 1;
                 energyChart.ChartAreas[0].Axes[0].Minimum = 0;
@@ -73,9 +75,12 @@ namespace DSP_lab1
         /// <param name="fileName"></param>
         private void WriteParameter(float[] signal, string fileName)
         {
+            var max = signal.Max(x=> Math.Abs(x));
+            var scaledSignal = signal.Select(x => x/Math.Abs(max)).ToArray();
+
             using (var writer = new WaveFileWriter(fileName, _speechFileFormat))
             {
-                writer.WriteSamples(signal, 0, signal.Length);
+                writer.WriteSamples(scaledSignal, 0, signal.Length);
             }
         }
 
@@ -95,15 +100,18 @@ namespace DSP_lab1
             var tmp = new float[file.Length - _windowSize];
             energyChart.Series[0].Points.Clear();
             var jump = (int) Math.Round(_windowSize*_overlapping);
-            for (int i = 0; i < file.Length - _windowSize; i+= jump)
+            for (int i = 0; i < file.Length - _windowSize; i += jump)
             {
                 for (int j = 0; j < _windowSize; j++)
                 {
-                    tmp[i] += (float)Math.Pow(file[i + j], 2);
+                    tmp[i] += (float) Math.Pow(file[i + j], 2);
                 }
                 tmp[i] = (float) (30.0f*Math.Log10(tmp[i]/_windowSize));
-                energyChart.Series[0].Points.AddXY(i, tmp[i]);
+                //energyChart.Series[0].Points.AddXY(i, tmp[i]);
+                for (int k = i + 1; k < i + jump && k < tmp.Length; k++)
+                    tmp[k] = tmp[i];
             }
+            energyChart.Series[0].Points.DataBindY(tmp);
             return tmp;
         }
 
@@ -118,13 +126,13 @@ namespace DSP_lab1
             var rand = new Random(DateTime.Now.Millisecond);
 
             var tmp = new float[file.Length - _windowSize];
-            autocorellationChart.Series[0].Points.Clear();
+            autocorrelationChart.Series[0].Points.Clear();
 
             for (int i = 0; i < file.Length; i+=5)
                 file[i] *= (checkBox1.Checked) ? (float) (rand.NextDouble()*(_noiseLevel/100.0f)) : 1.0f;
 
             var jump = (int)Math.Round(_windowSize * _overlapping);
-            for (int i = 0; i < file.Length - _windowSize; i+=jump)
+            for (int i = 0; i < file.Length - _windowSize; i += jump)
             {
                 double energy = 0;
                 for (int j = 0; j < _windowSize - 1; j++)
@@ -133,8 +141,11 @@ namespace DSP_lab1
                     tmp[i] += file[i + j]*file[i + j + 1];
                 }
                 tmp[i] = (float) (50.0f*(tmp[i]/energy));
-                autocorellationChart.Series[0].Points.AddXY(i, tmp[i]);
+                //autocorrelationChart.Series[0].Points.AddXY(i, tmp[i]);
+                for (int k = i + 1; k < i + jump && k < tmp.Length; k++)
+                    tmp[k] = tmp[i];
             }
+            autocorrelationChart.Series[0].Points.DataBindY(tmp);
             return tmp;
         }
 
@@ -148,7 +159,7 @@ namespace DSP_lab1
             zeroCrossingChart.Series[0].Points.Clear();
 
             var jump = (int)Math.Round(_windowSize * _overlapping);
-            for (int i = 0; i < _speechFile.Length - _windowSize; i+=jump)
+            for (int i = 0; i < _speechFile.Length - _windowSize; i += jump)
             {
                 int zeroes = 0;
                 for (int j = 0; j < _windowSize - 1; j++)
@@ -157,8 +168,11 @@ namespace DSP_lab1
                         zeroes++;
                 }
                 tmp[i] = (float) (zeroes/2.0*_windowSize);
-                zeroCrossingChart.Series[0].Points.AddXY(i, tmp[i]);
+                //zeroCrossingChart.Series[0].Points.AddXY(i, tmp[i]);
+                for (int k = i + 1; k < i + jump && k < tmp.Length; k++)
+                    tmp[k] = tmp[i];
             }
+            zeroCrossingChart.Series[0].Points.DataBindY(tmp);
             return tmp;
         }
 
@@ -190,6 +204,19 @@ namespace DSP_lab1
         private void overlappingUD_ValueChanged(object sender, EventArgs e)
         {
             _overlapping = (float) overlappingUD.Value;
+        }
+
+        private void fileChart_MouseDown(object sender, MouseEventArgs e)
+        {
+            var fileGraphics = fileChart.CreateGraphics();
+            var energyGraphics = energyChart.CreateGraphics();
+            var autocorGraphics = autocorrelationChart.CreateGraphics();
+            var zerosGraphics = zeroCrossingChart.CreateGraphics();
+
+            fileGraphics.DrawLine(Pens.Chartreuse, e.X, 0, e.X, fileChart.Width);
+            energyGraphics.DrawLine(Pens.Chartreuse, e.X, 0, e.X, energyChart.Width);
+            autocorGraphics.DrawLine(Pens.Chartreuse, e.X, 0, e.X, autocorrelationChart.Width);
+            zerosGraphics.DrawLine(Pens.Chartreuse, e.X, 0, e.X, zeroCrossingChart.Width);
         }
     }
 }

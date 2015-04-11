@@ -43,7 +43,7 @@
             this.energyChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.autocorellationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.autocorrelationChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label4 = new System.Windows.Forms.Label();
             this.zeroCrossingChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.overlappingUD = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.fileChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.energyChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.autocorellationChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autocorrelationChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zeroCrossingChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowSizeUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.noiseLevelUD)).BeginInit();
@@ -93,10 +93,18 @@
             this.fileChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea5.AxisX.IsMarginVisible = false;
+            chartArea5.AxisY.IsLabelAutoFit = false;
+            chartArea5.InnerPlotPosition.Auto = false;
+            chartArea5.InnerPlotPosition.Height = 72.54654F;
+            chartArea5.InnerPlotPosition.Width = 91.06612F;
+            chartArea5.InnerPlotPosition.X = 6F;
+            chartArea5.InnerPlotPosition.Y = 6.14362F;
             chartArea5.Name = "ChartArea1";
             this.fileChart.ChartAreas.Add(chartArea5);
             this.fileChart.Location = new System.Drawing.Point(12, 29);
             this.fileChart.Name = "fileChart";
+            this.fileChart.Padding = new System.Windows.Forms.Padding(20, 5, 5, 5);
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series5.Name = "Series1";
@@ -104,15 +112,23 @@
             this.fileChart.Size = new System.Drawing.Size(512, 128);
             this.fileChart.TabIndex = 3;
             this.fileChart.Text = "chart1";
+            this.fileChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.fileChart_MouseDown);
             // 
             // energyChart
             // 
             this.energyChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea6.AxisX.IsMarginVisible = false;
+            chartArea6.AxisY.IsLabelAutoFit = false;
             chartArea6.BackColor = System.Drawing.Color.Gray;
+            chartArea6.InnerPlotPosition.Auto = false;
+            chartArea6.InnerPlotPosition.Height = 72.54654F;
+            chartArea6.InnerPlotPosition.Width = 91.06612F;
+            chartArea6.InnerPlotPosition.X = 6F;
+            chartArea6.InnerPlotPosition.Y = 6.14362F;
             chartArea6.Name = "ChartArea1";
             this.energyChart.ChartAreas.Add(chartArea6);
-            this.energyChart.Location = new System.Drawing.Point(12, 189);
+            this.energyChart.Location = new System.Drawing.Point(12, 191);
             this.energyChart.Name = "energyChart";
             this.energyChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series6.ChartArea = "ChartArea1";
@@ -122,12 +138,13 @@
             this.energyChart.Size = new System.Drawing.Size(512, 128);
             this.energyChart.TabIndex = 4;
             this.energyChart.Text = "chart2";
+            this.energyChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.fileChart_MouseDown);
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 173);
+            this.label2.Location = new System.Drawing.Point(13, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 5;
@@ -137,35 +154,43 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 336);
+            this.label3.Location = new System.Drawing.Point(13, 337);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(218, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Автокорелляция с единичной задержкой:";
             // 
-            // autocorellationChart
+            // autocorrelationChart
             // 
-            this.autocorellationChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.autocorrelationChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea7.AxisX.IsMarginVisible = false;
+            chartArea7.AxisY.IsLabelAutoFit = false;
             chartArea7.BackColor = System.Drawing.Color.Gray;
+            chartArea7.InnerPlotPosition.Auto = false;
+            chartArea7.InnerPlotPosition.Height = 72.54654F;
+            chartArea7.InnerPlotPosition.Width = 91.06612F;
+            chartArea7.InnerPlotPosition.X = 6F;
+            chartArea7.InnerPlotPosition.Y = 6.14362F;
             chartArea7.Name = "ChartArea1";
-            this.autocorellationChart.ChartAreas.Add(chartArea7);
-            this.autocorellationChart.Location = new System.Drawing.Point(12, 352);
-            this.autocorellationChart.Name = "autocorellationChart";
-            this.autocorellationChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            this.autocorrelationChart.ChartAreas.Add(chartArea7);
+            this.autocorrelationChart.Location = new System.Drawing.Point(12, 353);
+            this.autocorrelationChart.Name = "autocorrelationChart";
+            this.autocorrelationChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series7.ChartArea = "ChartArea1";
             series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series7.Name = "Series1";
-            this.autocorellationChart.Series.Add(series7);
-            this.autocorellationChart.Size = new System.Drawing.Size(512, 128);
-            this.autocorellationChart.TabIndex = 6;
-            this.autocorellationChart.Text = "chart3";
+            this.autocorrelationChart.Series.Add(series7);
+            this.autocorrelationChart.Size = new System.Drawing.Size(512, 128);
+            this.autocorrelationChart.TabIndex = 6;
+            this.autocorrelationChart.Text = "chart3";
+            this.autocorrelationChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.fileChart_MouseDown);
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 500);
+            this.label4.Location = new System.Drawing.Point(13, 499);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 13);
             this.label4.TabIndex = 9;
@@ -175,10 +200,17 @@
             // 
             this.zeroCrossingChart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea8.AxisX.IsMarginVisible = false;
+            chartArea8.AxisY.IsLabelAutoFit = false;
             chartArea8.BackColor = System.Drawing.Color.Gray;
+            chartArea8.InnerPlotPosition.Auto = false;
+            chartArea8.InnerPlotPosition.Height = 75.89761F;
+            chartArea8.InnerPlotPosition.Width = 91.06612F;
+            chartArea8.InnerPlotPosition.X = 6F;
+            chartArea8.InnerPlotPosition.Y = 6.14362F;
             chartArea8.Name = "ChartArea1";
             this.zeroCrossingChart.ChartAreas.Add(chartArea8);
-            this.zeroCrossingChart.Location = new System.Drawing.Point(12, 516);
+            this.zeroCrossingChart.Location = new System.Drawing.Point(12, 515);
             this.zeroCrossingChart.Name = "zeroCrossingChart";
             this.zeroCrossingChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series8.ChartArea = "ChartArea1";
@@ -188,6 +220,7 @@
             this.zeroCrossingChart.Size = new System.Drawing.Size(512, 128);
             this.zeroCrossingChart.TabIndex = 8;
             this.zeroCrossingChart.Text = "chart4";
+            this.zeroCrossingChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.fileChart_MouseDown);
             // 
             // label5
             // 
@@ -339,16 +372,17 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.zeroCrossingChart);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.autocorellationChart);
+            this.Controls.Add(this.autocorrelationChart);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.energyChart);
             this.Controls.Add(this.fileChart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.openFileButton);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.fileChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.energyChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.autocorellationChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autocorrelationChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zeroCrossingChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.windowSizeUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.noiseLevelUD)).EndInit();
@@ -368,7 +402,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart energyChart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart autocorellationChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart autocorrelationChart;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataVisualization.Charting.Chart zeroCrossingChart;
         private System.Windows.Forms.Label label5;
