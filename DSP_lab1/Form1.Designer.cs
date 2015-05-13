@@ -54,6 +54,7 @@
             this.cutFrequencyUD = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.overlappingUD = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.energyChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.autocorrelationChart)).BeginInit();
@@ -273,6 +274,11 @@
             this.noiseLevelUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.noiseLevelUD.DecimalPlaces = 4;
             this.noiseLevelUD.Enabled = false;
+            this.noiseLevelUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.noiseLevelUD.Location = new System.Drawing.Point(534, 135);
             this.noiseLevelUD.Name = "noiseLevelUD";
             this.noiseLevelUD.Size = new System.Drawing.Size(120, 20);
@@ -356,11 +362,23 @@
             65536});
             this.overlappingUD.ValueChanged += new System.EventHandler(this.overlappingUD_ValueChanged);
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(534, 252);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Перерасчёт";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(669, 661);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.overlappingUD);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cutFrequencyUD);
@@ -413,6 +431,7 @@
         private System.Windows.Forms.NumericUpDown cutFrequencyUD;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown overlappingUD;
+        private System.Windows.Forms.Button button1;
     }
 }
 
